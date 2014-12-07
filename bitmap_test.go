@@ -43,7 +43,7 @@ func TestGet(t *testing.T) {
 		t.Error("expected true, got false")
 	}
     // Larger number (to prove indexing past the first
-    // byte works.
+    // byte works).
 	if b.Get(42) {
 		t.Error("expected false, got true")
 	}
@@ -78,6 +78,10 @@ func TestSetUnset(t *testing.T) {
 	if b.Get(2){
 		t.Error("expected it to be unset")
 	}
+	b.Unset(2)
+	if b.Get(2){
+		t.Error("expected it to still be unset")
+	}
 }
 
 func ExampleBitmap () {
@@ -85,6 +89,14 @@ func ExampleBitmap () {
     b.Set(2)
     fmt.Printf("2 in bitmap: %v. 7 in bitmap: %v.\n", b.Get(2), b.Get(7))
     // Output: 2 in bitmap: true. 7 in bitmap: false.
+}
+
+func ExampleValues () {
+    b := bitmap.New(10)
+    b.Set(2)
+    b.Set(7)
+    fmt.Println(b.Values())
+    // Output: [2 7]
 }
 
 // TestValues tests the retrieval of a slice of
