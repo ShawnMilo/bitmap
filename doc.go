@@ -1,5 +1,4 @@
-/* Package bitmap provides a simple bitmap which allows individual bits to be
-set and read from a slice of bytes.
+/* Package bitmap provides a simple bitmap which allows individual bits to be set and read within a slice of bytes.
 
 The package was inspired by the book "Programming Pearls," by Jon Bentley. The
 first example in the book is a clever sorting solution which uses a bitmap to
