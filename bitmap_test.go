@@ -5,7 +5,7 @@ Test the bitmap package.
 package bitmap_test
 
 import (
-	"bitmap"
+	"github.com/shawnmilo/bitmap"
 	"testing"
     "fmt"
 )
@@ -85,4 +85,17 @@ func ExampleBitmap () {
     b.Set(2)
     fmt.Printf("2 in bitmap: %v. 7 in bitmap: %v.\n", b.Get(2), b.Get(7))
     // Output: 2 in bitmap: true. 7 in bitmap: false.
+}
+
+// TestValues tests the retrieval of a slice of
+// values from a BitMap.
+func TestValues(t *testing.T) {
+	b := bitmap.New(42)
+	b.Set(2)
+	b.Set(3)
+	b.Set(13)
+	b.Set(42)
+	if !slicesEqual(b.Values(), []int{2, 3, 13, 42}) {
+		t.Error("didn't receive the expected values")
+	}
 }

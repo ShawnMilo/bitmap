@@ -14,13 +14,19 @@ func New(s int) BitMap {
 	return BitMap{size: s, vals: make([]byte, l, l)}
 }
 
+// Size returns the size of a bitmap. This is the number
+// of bits.
 func (b BitMap) Size() int {
 	return b.size
 }
 
+// For internal use; drives Set and Unset.
 func (b BitMap) toggle(i int) {
+	// Position of the byte in b.vals.
 	p := i >> 3
+	// Position of the bit in the byte.
 	remainder := (i - (p * 8))
+	// Toggle the bit.
 	if remainder == 1 {
 		b.vals[p] = b.vals[p] ^ 1
 	} else {
@@ -31,28 +37,32 @@ func (b BitMap) toggle(i int) {
 // Set sets a position in
 // the bitmap to 1.
 func (b BitMap) Set(i int) {
-    // Don't unset.
+	// Don't unset.
 	if b.Get(i) {
 		return
 	}
-    b.toggle(i)
+	b.toggle(i)
 }
 
 // Unset sets a position in
 // the bitmap to 0.
 func (b BitMap) Unset(i int) {
-    // Don't set.
+	// Don't set.
 	if !b.Get(i) {
 		return
 	}
-    b.toggle(i)
+	b.toggle(i)
 }
 
 // Values returns a slice of ints
 // represented by the values in the bitmap.
 func (b BitMap) Values() []int {
 	list := make([]int, 0, b.Size())
-	list = append(list, 2)
+	for i := 1; i <= b.Size(); i++ {
+		if b.Get(i) {
+			list = append(list, i)
+		}
+	}
 	return list
 }
 

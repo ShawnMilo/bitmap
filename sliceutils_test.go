@@ -18,13 +18,13 @@ var equalSlices = [][2][]int{
 
 // The slices here are not equal.
 var inequalSlices = [][2][]int{
-	[2][]int{[]int{2}, []int{2, 3}},                // wrong number of values on right
-	[2][]int{[]int{1, 2, 3}, []int{1, 2}},          // wrong number on left
-	[2][]int{[]int{9}, []int{7}},                   // simple
-	[2][]int{[]int{13, 17}, []int{13, 18}},         // simple, multiple values
-	[2][]int{[]int{21, 13, 17}, []int{13, 17}},     // Same values, extra on left
-	[2][]int{[]int{21, 13}, []int{13, 17, 21}},     // Same values, extra on right
-	[2][]int{[]int{13, 21}, []int{13, 17, 21}},     // Same values, but duplicate
+	[2][]int{[]int{2}, []int{2, 3}},            // wrong number of values on right
+	[2][]int{[]int{1, 2, 3}, []int{1, 2}},      // wrong number on left
+	[2][]int{[]int{9}, []int{7}},               // simple
+	[2][]int{[]int{13, 17}, []int{13, 18}},     // simple, multiple values
+	[2][]int{[]int{21, 13, 17}, []int{13, 17}}, // Same values, extra on left
+	[2][]int{[]int{21, 13}, []int{13, 17, 21}}, // Same values, extra on right
+	[2][]int{[]int{13, 21}, []int{13, 17, 21}}, // Same values, but duplicate
 }
 
 // slicesEqual accepts two slices and returns a boolean
