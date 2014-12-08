@@ -76,5 +76,4 @@ func (b BitMap) Get(i int) bool {
 	} else {
 		return b.vals[p] > b.vals[p]^(1<<uint(remainder-1))
 	}
-	return false
 }
