@@ -25,7 +25,7 @@ func (b BitMap) toggle(i int) {
 	// Position of the byte in b.vals.
 	p := i >> 3
 	// Position of the bit in the byte.
-	remainder := (i - (p * 8))
+	remainder := i - (p * 8)
 	// Toggle the bit.
 	if remainder == 1 {
 		b.vals[p] = b.vals[p] ^ 1
