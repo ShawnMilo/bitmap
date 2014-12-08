@@ -73,7 +73,6 @@ func (b BitMap) Get(i int) bool {
 	remainder := i - (p * 8)
 	if remainder == 1 {
 		return b.vals[p] > b.vals[p]^1
-	} else {
-		return b.vals[p] > b.vals[p]^(1<<uint(remainder-1))
 	}
+	return b.vals[p] > b.vals[p]^(1<<uint(remainder-1))
 }

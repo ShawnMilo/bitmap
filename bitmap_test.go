@@ -5,9 +5,9 @@ Test the bitmap package.
 package bitmap_test
 
 import (
+	"fmt"
 	"github.com/shawnmilo/bitmap"
 	"testing"
-    "fmt"
 )
 
 // TestCreate proves we can create a
@@ -42,8 +42,8 @@ func TestGet(t *testing.T) {
 	if !b.Get(3) {
 		t.Error("expected true, got false")
 	}
-    // Larger number (to prove indexing past the first
-    // byte works).
+	// Larger number (to prove indexing past the first
+	// byte works).
 	if b.Get(42) {
 		t.Error("expected false, got true")
 	}
@@ -57,46 +57,45 @@ func TestGet(t *testing.T) {
 func TestSetTwice(t *testing.T) {
 	b := bitmap.New(10)
 	b.Set(2)
-	if !b.Get(2){
+	if !b.Get(2) {
 		t.Error("expected it to be set")
 	}
 	b.Set(2)
-	if !b.Get(2){
+	if !b.Get(2) {
 		t.Error("expected it to still be set")
 	}
 }
-
 
 // Unset a value.
 func TestSetUnset(t *testing.T) {
 	b := bitmap.New(10)
 	b.Set(2)
-	if !b.Get(2){
+	if !b.Get(2) {
 		t.Error("expected it to be set")
 	}
 	b.Unset(2)
-	if b.Get(2){
+	if b.Get(2) {
 		t.Error("expected it to be unset")
 	}
 	b.Unset(2)
-	if b.Get(2){
+	if b.Get(2) {
 		t.Error("expected it to still be unset")
 	}
 }
 
-func ExampleBitmap () {
-    b := bitmap.New(10)
-    b.Set(2)
-    fmt.Printf("2 in bitmap: %v. 7 in bitmap: %v.\n", b.Get(2), b.Get(7))
-    // Output: 2 in bitmap: true. 7 in bitmap: false.
+func ExampleBitmap() {
+	b := bitmap.New(10)
+	b.Set(2)
+	fmt.Printf("2 in bitmap: %v. 7 in bitmap: %v.\n", b.Get(2), b.Get(7))
+	// Output: 2 in bitmap: true. 7 in bitmap: false.
 }
 
-func ExampleValues () {
-    b := bitmap.New(10)
-    b.Set(2)
-    b.Set(7)
-    fmt.Println(b.Values())
-    // Output: [2 7]
+func ExampleValues() {
+	b := bitmap.New(10)
+	b.Set(2)
+	b.Set(7)
+	fmt.Println(b.Values())
+	// Output: [2 7]
 }
 
 // TestValues tests the retrieval of a slice of
