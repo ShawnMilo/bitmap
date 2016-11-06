@@ -46,7 +46,7 @@ func TestSet(t *testing.T) {
 	}
 }
 
-func TestGet(t *testing.T) {
+func TestIsSet(t *testing.T) {
 	b := bitmap.New(50)
 	b.Set(2)
 	if !get(b, 2) {
@@ -152,9 +152,9 @@ func TestSetOverflow(t *testing.T) {
 	}
 }
 
-// TestGetOverflow tests dealing with out-of-range issues
-// in the Get method.
-func TestGetOverflow(t *testing.T) {
+// TestIsSet tests dealing with out-of-range issues
+// in the IsSet method.
+func TestIsSet(t *testing.T) {
 	b := bitmap.New(42)
 	_, err := b.IsSet(52)
 	if err != bitmap.ErrOutOfRange {

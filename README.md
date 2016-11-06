@@ -11,7 +11,7 @@ http://www.cs.bell-labs.com/cm/cs/pearls/cto.html
 func ExampleBitmap () {
     b := bitmap.New(10)
     b.Set(2)
-    fmt.Printf("2 in bitmap: %v. 7 in bitmap: %v.\n", b.Get(2), b.Get(7))
+    fmt.Printf("2 in bitmap: %v. 7 in bitmap: %v.\n", b.IsSet(2), b.IsSet(7))
     // Output: 2 in bitmap: true. 7 in bitmap: false.
 }
 
