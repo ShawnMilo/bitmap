@@ -57,7 +57,7 @@ func (b BitMap) Set(i int) error {
 		return x
 	}
 	// Don't unset.
-	val, err := b.Get(i)
+	val, err := b.IsSet(i)
 	if err != nil {
 		return err
 	}
@@ -72,7 +72,7 @@ func (b BitMap) Set(i int) error {
 // the bitmap to 0.
 func (b BitMap) Unset(i int) error {
 	// Don't set.
-	val, err := b.Get(i)
+	val, err := b.IsSet(i)
 	if err != nil {
 		return err
 	}
@@ -87,7 +87,7 @@ func (b BitMap) Unset(i int) error {
 func (b BitMap) Values() ([]int, error) {
 	list := make([]int, 0, b.Size())
 	for i := 1; i <= b.Size(); i++ {
-		val, err := b.Get(i)
+		val, err := b.IsSet(i)
 		if err != nil {
 			return nil, err
 		}
@@ -98,9 +98,9 @@ func (b BitMap) Values() ([]int, error) {
 	return list, nil
 }
 
-// Get returns a boolean indicating whether
+// IsSet returns a boolean indicating whether
 // the bit is set for the position in question.
-func (b BitMap) Get(i int) (bool, error) {
+func (b BitMap) IsSet(i int) (bool, error) {
 	if x := b.checkRange(i); x != nil {
 		return false, x
 	}

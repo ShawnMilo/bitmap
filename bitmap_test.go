@@ -16,7 +16,7 @@ import (
 // all the error checking so it's not repeated
 // a million times.
 func get(b bitmap.BitMap, i int) bool {
-	val, err := b.Get(i)
+	val, err := b.IsSet(i)
 	if err != nil {
 		log.Fatal("error getting from bitmap", err)
 	}
@@ -156,7 +156,7 @@ func TestSetOverflow(t *testing.T) {
 // in the Get method.
 func TestGetOverflow(t *testing.T) {
 	b := bitmap.New(42)
-	_, err := b.Get(52)
+	_, err := b.IsSet(52)
 	if err != bitmap.ErrOutOfRange {
 		t.Error("out of range, there should be an error")
 	}
